@@ -14,12 +14,12 @@ img {
      object-fit: cover;
 }
 
-img:hover {
-  filter: blur(10px);
-  filter: brightness(10px);
-  cursor: grab;
-}
-
+/* img:hover{
+    //z-index: 1;
+    filter: blur(10px);
+    filter:brightness(10px);
+    cursor:grab;
+} */
 a {
   text-decoration: none;
 }
