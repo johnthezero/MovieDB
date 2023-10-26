@@ -110,6 +110,46 @@ const searchFilmByName = () => {
 
 searchBtn.addEventListener("click", searchFilmByName);
 
+//////////getDivWithFilmInfo/////////
+
+const getDivWithFilmInfo = (film) => {
+  console.log("I try create div here");
+
+  let mouseenterFilm = document.createElement("div");
+  mouseenterFilm.classList.add("mouseenter_film_info");
+
+  let title = document.createElement("h1");
+  title.classList.add("film_title");
+  title.textContent = film.original_title;
+
+  let year = document.createElement("p");
+  year.classList.add("film_year");
+  year.textContent = film.release_date.substring(0, 4);
+
+  let genrList = "";
+  film.genre_ids.map((id) => {
+    genrList = `${genrList}${genreId[id.toString()]}\\`;
+  });
+  let genre = document.createElement("p");
+  genre.classList.add("film_genres");
+  genre.textContent = genrList.slice(0, -1);
+
+  let img = document.createElement("img");
+  img.src = "star.svg";
+
+  let points = document.createElement("p");
+  points.classList.add("film_points");
+  points.textContent = film.vote_average;
+
+  mouseenterFilm.appendChild(title);
+  mouseenterFilm.appendChild(year);
+  mouseenterFilm.appendChild(genre);
+  mouseenterFilm.appendChild(img);
+  mouseenterFilm.appendChild(points);
+
+  return mouseenterFilm;
+};
+
 /////////////Latest releases////////
 const loadLatestMovies = async () => {
   try {
@@ -130,23 +170,23 @@ const loadLatestMovies = async () => {
     secondSwiper.innerHTML = "";
 
     if (data.results) {
-      let maxNumOfFilm = 0;
-      while (maxNumOfFilm <= 20) {
-        maxNumOfFilm++;
-        data.results.forEach((film) => {
-          let img = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
+      data.results.forEach((film) => {
+        let img = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
 
-          let swiperSlideEl = document.createElement("div");
-          swiperSlideEl.classList.add("swiper-slide");
-          let imgEl = document.createElement("img");
-          imgEl.src = img;
-          imgEl.alt = film.title;
-          swiperSlideEl.appendChild(imgEl);
-          secondSwiper.appendChild(swiperSlideEl);
+        let swiperSlideEl = document.createElement("div");
+        swiperSlideEl.classList.add("swiper-slide");
+        let imgEl = document.createElement("img");
+        imgEl.src = img;
+        imgEl.alt = film.title;
+        swiperSlideEl.appendChild(imgEl);
+        secondSwiper.appendChild(swiperSlideEl);
 
-          swiper2.update();
-        });
-      }
+        let filmInfo = getDivWithFilmInfo(film);
+
+        secondSwiper.appendChild(filmInfo);
+
+        swiper2.update();
+      });
     } else {
       console.log("No results");
     }
@@ -155,7 +195,7 @@ const loadLatestMovies = async () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", loadLatestMovies);
+loadLatestMovies();
 
 ////////////GENRE ID//////////
 
@@ -203,23 +243,19 @@ const loadMoviesGenre = async (genreName = "comedy") => {
     thirdSwiper.innerHTML = "";
 
     if (data.results) {
-      let maxNumOfFilm = 0;
-      while (maxNumOfFilm <= 20) {
-        maxNumOfFilm++;
-        data.results.forEach((film) => {
-          let img = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
+      data.results.forEach((film) => {
+        let img = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
 
-          let swiperSlideEl = document.createElement("div");
-          swiperSlideEl.classList.add("swiper-slide");
-          let imgEl = document.createElement("img");
-          imgEl.src = img;
-          imgEl.alt = film.title;
-          swiperSlideEl.appendChild(imgEl);
-          thirdSwiper.appendChild(swiperSlideEl);
+        let swiperSlideEl = document.createElement("div");
+        swiperSlideEl.classList.add("swiper-slide");
+        let imgEl = document.createElement("img");
+        imgEl.src = img;
+        imgEl.alt = film.title;
+        swiperSlideEl.appendChild(imgEl);
+        thirdSwiper.appendChild(swiperSlideEl);
 
-          swiper3.update();
-        });
-      }
+        swiper3.update();
+      });
     } else {
       console.log("No results");
     }
@@ -227,7 +263,7 @@ const loadMoviesGenre = async (genreName = "comedy") => {
     console.error("Error fetching data:", error);
   }
 };
-document.addEventListener("DOMContentLoaded", loadMoviesGenre);
+loadMoviesGenre();
 
 ///////////CLICK ON LIST OF GENRES////////////////
 const genres = document.querySelectorAll(".genre-list a");
