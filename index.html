@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logodiv">
+                <a href="" class="logo">BE<span>MOVIES</span></a>
+            </div>
+            
+            <div class="navbar">
+                <a href=".searchbar">SEARCH</a>
+                <a href="#latest">LATEST</a>
+                <a id="test" href="#genres">GENRES</a>
+                <a id="register" href="#">REGISTER</a>
+                <a id="signin" href="#">SIGNIN</a>
+            </div>
+        </div>       
+    </header>
+    <div class="main">
+        <div class="searchbar">
+                <div class="moviesearch">
+                    <input type="text" placeholder="search a movie">
+                </div>
+                <div class="searchbutton">
+                    <a class="open-modal" href="#">&#x27A1</a>
+                </div>
+        </div>
+        <!--  FIRST SWIPER -->
+
+        <section id="results">
+
+            <div class="swiper-button-next nextone"><img src="right-arrow.svg" alt=""></div>
+            <div class="swiper-button-next prevone"><img src="left-arrow.svg" alt=""></div>
+            
+            <p class="results-paragraph"></p>
+            <div class="swiper one">
+                <div class="swiper-wrapper result-container">
+                    <div class="swiper-slide slide-result">
+                        <img src="https://s3-alpha-sig.figma.com/img/18d4/e152/3a9723ae5397841adf7fbaed84bd30b2?Expires=1699228800&Signature=dFbxDSkYk7HqiE3NvJT-tMKeDxldU7~2vNXVqn0FkYodDb4qJ511EgOTKmqP11qyHWkNR-Ht8UedqFkvtCKe6W-3rX8-Q96qNODAe3LlmZ4F-DlSTceQkahk3cpYIpEcP5099GZ9OZTTUYJm9JB2aGB~m-LfJaXXiR5tVDWWU7gX7JAoRzYqHtrRdCpU82Q9al92QBeBBdIcfxIaK4s9dKExrfu7Uga3b8rnINKzIaq2qSdRCNHBHV1yYXDB-TxzIWROQRAo88aHK03XdNvpG3yyk-dhBq5eA82niTnAboFO85WFlEXOCW-uC0BT0CVWpIc4DmVIwQazA830IKVWKQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="">
+                    </div>
+                  
+                </div>
+            </div>
+        </section>
+         
+        <!--  SECOND SWIPER -->
+        
+        <div id="latests" class="grid">
+            <h2>Latest releases</h2>
+            
+                <div class="swiper-button-next nexttwo"><img src="right-arrow.svg" alt=""></div>
+                <div class="swiper-button-next prevtwo"><img src="left-arrow.svg" alt=""></div>
+                <div class="swiper two">
+                    <div class="swiper-wrapper latests-container">
+                    
+                       
+                    </div>
+                </div>
+               
+        </div>
+
+        <!--  THIRD SWIPER -->
+        <div id="genres" class="grid">
+            <h2>Movies by genre</h2>
+            <div class="genre-list">
+                <a class="genre-comedy" href="">Comedy</a>
+                <a class="genre-dramay" href="">Drama</a>
+                <a class="genre-action" href="">Action</a>
+                <a class="genre-romance" href="">Romance</a>
+                <a class="genre-fantasy" href="">Fantasy</a>
+                <a class="genre-animation" href="">Animation</a>
+            </div>
+            <hr>
+            <h3 class="selectedgenre"></h3>
+            <div id="resultsbygenre" class="grid">     
+                    <div class="swiper-button-next nextthree"><img src="right-arrow.svg" alt=""></div>
+                    <div class="swiper-button-next prevthree"><img src="left-arrow.svg" alt=""></div>
+                    <div class="swiper three">
+                        <div class="swiper-wrapper genres-container">
+                      
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="header-container">
+            <a class="logo">BE<span>MOVIES</span></a>
+            <div class="navbar">
+                <a href=".searchbar">SEARCH</a>
+                <a href="#latest">LATEST</a>
+                <a href="#genres">GENRES</a>
+                <a href="#">REGISTER</a>
+                <a href="#">SIGNIN</a>
+            </div>
+            <div class="copyright">@2023 - All rights reserved</div>
+        </div>
+    </footer>
+
+    <!-- To turn this into a modal, just do this in JS : ==>
+        1.    select the element with a querySelector (ex :  const modal1 = document.querySelector(".modal-signup");)
+        2.    add a listener to the button that triggers the opening of the modal
+        3.    the listener function should be this (modal1.showModal();)
+        4.    and That's it !
+    -->
+    <dialog class="modal-signup">
+        <div class="modal-container">
+            <a class="close-signup" href="">X</a>
+            <div class="signuplogin">
+                <div class="signup">
+                    <a href="">SIGNUP</a>
+                </div>
+                <div class="login selected">
+                    <a href="">LOGIN</a>
+                </div>
+            </div>
+            <div class="form">
+                <div class="user-input">
+                    <input class="login" type="text" placeholder="Username">
+                    <input class="password" type="password" placeholder="Password">
+                </div>
+                
+                <div class="rememberme">
+                    <input value="" type="checkbox"></input>
+                    <p>Remember Me</p>
+                </div>
+                <button>Login</button>
+            </div>
+            <div class="forgotpassword">
+                <a href="">I forgot my password</a>
+                <p>Not a member yet ? <a class="signup" href="">Sign up</a> </p>
+            </div>
+            
+        </div>
+    </dialog>
+    
+
+    <dialog class="modal-movie">
+        <a class="close-movie-popup" href="">X</a>
+        <div class="movie-container">
+            <div class="movie-image">
+                <img src="https://s3-alpha-sig.figma.com/img/18d4/e152/3a9723ae5397841adf7fbaed84bd30b2?Expires=1699228800&Signature=dFbxDSkYk7HqiE3NvJT-tMKeDxldU7~2vNXVqn0FkYodDb4qJ511EgOTKmqP11qyHWkNR-Ht8UedqFkvtCKe6W-3rX8-Q96qNODAe3LlmZ4F-DlSTceQkahk3cpYIpEcP5099GZ9OZTTUYJm9JB2aGB~m-LfJaXXiR5tVDWWU7gX7JAoRzYqHtrRdCpU82Q9al92QBeBBdIcfxIaK4s9dKExrfu7Uga3b8rnINKzIaq2qSdRCNHBHV1yYXDB-TxzIWROQRAo88aHK03XdNvpG3yyk-dhBq5eA82niTnAboFO85WFlEXOCW-uC0BT0CVWpIc4DmVIwQazA830IKVWKQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="">
+            </div>
+            <div class="movie-description">
+                <h2 class="movie-title">The Godfather</h2>
+                <h3 class="release-date">1972</h3>
+                <h2 class="ratings">★ <span> 8.5</span></h2>
+                <h3 class="movie-genre">Crime / Drama</h3>
+                <p class="synopsis">Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.</p>
+                <p class="actors">Cast : <span>Me, Myself, I</span> </p>
+            </div>
+        </div>
+    </dialog>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</html>
