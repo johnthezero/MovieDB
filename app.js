@@ -165,7 +165,7 @@ const genreId = {
   16: "Animation",
   35: "Comedy",
   80: "Crime",
-  99: "Documenta",
+  99: "Documentary",
   18: "Drama",
   10751: "Family",
   14: "Fantasy",
@@ -174,18 +174,19 @@ const genreId = {
   10402: "Music",
   9648: "Mystery",
   10749: "Romance",
-  878: "Science Fn",
+  878: "Science Fiction",
   10770: "TV Movie",
   53: "Thriller",
   10752: "War",
   37: "Western",
 };
+
 ////////////GENRE//////////
 
-const loadLatestMoviesGenre = async (e, id = "comedy") => {
+const loadMoviesGenre = async (genreName = "comedy") => {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&page=1&sort_by=popularity.desc&with_genres=${id}`,
+      `https://api.themoviedb.org/3/search/movie?api_key=&language=en-US&query=${genreName}&page=1&include_adult=false`,
       options
     );
 
@@ -226,7 +227,7 @@ const loadLatestMoviesGenre = async (e, id = "comedy") => {
     console.error("Error fetching data:", error);
   }
 };
-document.addEventListener("DOMContentLoaded", loadLatestMoviesGenre);
+document.addEventListener("DOMContentLoaded", loadMoviesGenre);
 
 ///////////CLICK ON LIST OF GENRES////////////////
 const genres = document.querySelectorAll(".genre-list a");
@@ -235,7 +236,6 @@ genres.forEach((genre) => {
   genre.addEventListener("click", (e) => {
     e.preventDefault();
     const genreName = e.target.textContent.toLowerCase();
-    console.log(16);
-    loadLatestMoviesGenre(genreName);
+    loadMoviesGenre(genreName);
   });
 });
