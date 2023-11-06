@@ -31,12 +31,14 @@ let register = document.querySelector("#register");
 register.addEventListener("click", () => {
   document.querySelector(".modal-signup").showModal();
 });
-// let movieModal = document.querySelector(".modal-movie");
-// let swiperSlide = document.querySelector(".mouseenter_film_info");
-// console.log(swiperSlide);
-// swiperSlide.addEventListener("click", () => {
-//   movieModal.showModal();
-// });
+let signinFooter = document.querySelector("#signin_footer");
+signinFooter.addEventListener("click", () => {
+  document.querySelector(".modal-signup").showModal();
+});
+let registerFooter = document.querySelector("#register_footer");
+registerFooter.addEventListener("click", () => {
+  document.querySelector(".modal-signup").showModal();
+});
 
 //////MOVIE MODAL//////////
 
@@ -347,6 +349,15 @@ const loadMoviesGenre = async (genreName = "comedy") => {
 };
 loadMoviesGenre();
 
+///////////////RED//////////////
+const choseGenreRed = (item) => {
+  const genreLinks = document.querySelectorAll(".genre-list a");
+  genreLinks.forEach((el) => {
+    el.style.backgroundColor = "transparent";
+  });
+  item.style.backgroundColor = "red";
+};
+
 ///////////CLICK ON LIST OF GENRES////////////////
 const genres = document.querySelectorAll(".genre-list a");
 
@@ -355,6 +366,7 @@ genres.forEach((genre) => {
     e.preventDefault();
     const genreName = e.target.textContent.toLowerCase();
     loadMoviesGenre(genreName);
+    choseGenreRed(e.target);
   });
 });
 
