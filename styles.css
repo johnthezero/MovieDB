@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 img {
   display: block;
   width: 100%;
@@ -475,6 +479,69 @@ body .modal-movie .movie-container .movie-description .ratings {
 body .modal-movie .movie-container .movie-description .synopsis {
   margin-top: 13px;
   margin-bottom: 35px;
+}
+
+.close_menu,
+#check-menu,
+.burger_menu {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .burger_menu {
+    display: block;
+    z-index: 900;
+    font-size: 20px;
+    color: white;
+  }
+  .close_menu {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    display: none;
+    font-size: 20px;
+    z-index: 990;
+    color: white;
+  }
+  #check-menu {
+    display: block;
+    z-index: 90;
+  }
+  .navbar {
+    z-index: 999;
+    list-style: none;
+    background-color: #191a1b;
+    width: 100vw;
+    height: 200vh;
+    position: fixed;
+    top: 0px;
+    left: 120vw;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    padding-top: 100px;
+    gap: 30px !important;
+    transition: left 0.3s;
+    font-size: 25px;
+  }
+  #check-menu:checked ~ .navbar {
+    left: 0;
+    z-index: 99;
+  }
+  #check-menu:checked ~ label .burger_menu {
+    display: none;
+  }
+  #check-menu:checked ~ label .close_menu {
+    display: block;
+  }
+  #check-menu {
+    display: none;
+    z-index: 4;
+  }
+  label {
+    position: relative;
+    z-index: 999;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

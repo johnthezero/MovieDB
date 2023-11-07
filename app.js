@@ -370,13 +370,11 @@ genres.forEach((genre) => {
   });
 });
 
-// fetch("https://api.themoviedb.org/3/movie/53168/credits", options)
-//   .then((response) => response.json())
-//   .then((credits) => {
-//     // Extract the cast information from the credits response
-//     const cast = credits.cast;
-//     console.log(cast);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching movie credits:", error);
-//   });
+/////////////////BURGER MENU//////////////////
+
+const checkMenu = document.getElementById("check-menu");
+const headerNav = document.querySelector(".navbar");
+
+headerNav.addEventListener("click", () => {
+  checkMenu.checked = false;
+});
