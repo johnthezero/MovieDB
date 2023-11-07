@@ -66,14 +66,10 @@ registerFooter.addEventListener("click", () => {
 });
 
 const consoleFormData = (e) => {
-  let btn = e.target.textContent.toLowerCase();
-
-  if (btn === "signup") {
-    console.log(e.login);
-  }
-  if (btn === "login") {
-    console.log("jhg");
-  }
+  const inputValues = Array.from(
+    document.querySelectorAll(".user-input input")
+  ).map((el) => el.value);
+  console.log(inputValues);
 };
 
 document
