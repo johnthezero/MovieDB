@@ -23,6 +23,30 @@ let swiper3 = new Swiper(".three", {
   },
 });
 /////////////   MODAL   ////////////////
+const signinStyle = () => {
+  document.querySelector(".signup").classList.add("selected");
+  document.querySelector(".login").classList.remove("selected");
+
+  document.querySelector(".forgotpassword").style.display = "none";
+  document.querySelector(".checkpassword").style.display = "block";
+
+  document.querySelector(".form button").textContent = "SIGNUP";
+};
+const loginStyle = () => {
+  document.querySelector(".signup").classList.remove("selected");
+  document.querySelector(".login").classList.add("selected");
+  document.querySelector(".forgotpassword").style.display = "block";
+  document.querySelector(".checkpassword").style.display = "none";
+  document.querySelector(".checkpassword").style.display = "none";
+
+  document.querySelector(".form button").textContent = "LOGIN";
+};
+
+document
+  .querySelectorAll(".signup_click")
+  .forEach((el) => el.addEventListener("click", signinStyle));
+document.querySelector(".login_click").addEventListener("click", loginStyle);
+
 let signin = document.querySelector("#signin");
 signin.addEventListener("click", () => {
   document.querySelector(".modal-signup").showModal();
@@ -30,6 +54,7 @@ signin.addEventListener("click", () => {
 let register = document.querySelector("#register");
 register.addEventListener("click", () => {
   document.querySelector(".modal-signup").showModal();
+  signinStyle();
 });
 let signinFooter = document.querySelector("#signin_footer");
 signinFooter.addEventListener("click", () => {
@@ -39,6 +64,21 @@ let registerFooter = document.querySelector("#register_footer");
 registerFooter.addEventListener("click", () => {
   document.querySelector(".modal-signup").showModal();
 });
+
+const consoleFormData = (e) => {
+  let btn = e.target.textContent.toLowerCase();
+
+  if (btn === "signup") {
+    console.log(e.login);
+  }
+  if (btn === "login") {
+    console.log("jhg");
+  }
+};
+
+document
+  .querySelector(".form button")
+  .addEventListener("click", consoleFormData);
 
 //////MOVIE MODAL//////////
 
